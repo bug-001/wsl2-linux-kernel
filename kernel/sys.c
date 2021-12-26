@@ -2688,3 +2688,11 @@ COMPAT_SYSCALL_DEFINE1(sysinfo, struct compat_sysinfo __user *, info)
 	return 0;
 }
 #endif /* CONFIG_COMPAT */
+
+SYSCALL_DEFINE1(homo_114514, char *, str)
+{
+	const char * saying = "yarimasune!";
+	if (copy_to_user(str, saying, strlen(saying) + 1))
+		return -EFAULT;
+	return 0;
+}
